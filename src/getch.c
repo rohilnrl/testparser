@@ -2,12 +2,15 @@
 
 #define BUFSIZE 100
 
-static char buf[BUFSIZE];
-static int bufp = 0;
+char buf[BUFSIZE];
+int bufp = 0;
 
 int getch(void)
 {
-    return (bufp > 0) ? buf[--bufp] : getchar();
+    if (bufp > 0)
+        return buf[--bufp];
+    else
+        return getchar();
 }
 
 void ungetch(int c)

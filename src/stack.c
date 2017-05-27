@@ -1,19 +1,17 @@
 #include <stdio.h>
-#include <calc.h>
+#include "calc.h"
 
 #define MAXVAL 100
 
-static int sp = 0;
-static double val[MAXVAL];
+int sp = 0;
+double val[MAXVAL];
 
 void push(double c)
 {
-    if (sp >= MAXVAL) {
-        printf("error: stack overflow, can't push %g\n", c);
-        return;
-    }
-    
-    val[sp++] = c;
+    if (sp < MAXVAL)
+        val[sp++] = c;
+    else
+        printf("error: stack overflow\n");
 }
 
 double pop(void)
@@ -22,7 +20,7 @@ double pop(void)
         printf("error: stack underflow\n");
         return 0.0;
     }
-    
+
     return val[--sp];
 }
 

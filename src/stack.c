@@ -24,3 +24,18 @@ double pop(void)
     return val[--sp];
 }
 
+double peek(void)
+{
+    if (sp <= 0)
+        printf("error: stack underflow\n");
+    else
+        return val[sp - 1];
+}
+
+void clear(void)
+{
+    int i;
+    for (i = 0; i < MAXVAL; i++) {
+        val[i] = 0.0;
+    }
+}

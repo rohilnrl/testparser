@@ -35,9 +35,17 @@ int main()
             case '\n':
                 printf("%.8g\n", pop());
                 break;
+            case '%':
+                op2 = pop();
+                int f1 = (int) pop() % (int) op2;
+                double f2 = f1;
+                if (op2 != 0.0)
+                    push(f2);
+                else
+                    printf("error: zero divisor\n");
+                break;
             default:
-                printf("error: unknown command %s\n", s
-);
+                printf("error: unknown command %s\n", s);
                 break;
         }
     }
